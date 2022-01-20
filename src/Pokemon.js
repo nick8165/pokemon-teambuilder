@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from "react";
 import PokeCard from "./PokeCard"
+
 function Pokemon() {
 
     const [data, setData] = useState("")
-    const [card, setCard] = useState("")
+    const [selected, setSelected] = useState("bulbasaur")
+
     useEffect(() => {
-        fetch("http://localhost:8000/results")
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
             .then(res => res.json())
             .then(json => setData(json))
     },[])
 
     function option() {
         let array = []
-        for (let i = 0; i < data.length; i++) {
-            array.push(data[i].name)
+        for (let i = 0; i < data.results.length; i++) {
+            array.push(data.results[i].name)
         }
         return array.map((poke) => {return (<option value={poke} key={poke}>{poke}</option>)})
     }
 
     function handleChange(e) {
-        setCard(e.target.value)
+        setSelected(e.target.value)
     }
-
-    console.log(data)
 
     return (
         <div>
             <select name="select" id="select" onChange={handleChange}>
                 <option value="blank">Choose your Pokemon</option>
-                {option()}
+                {option(data)}
             </select>
-            <PokeCard card={card} />
+            <PokeCard selected={selected} />
         </div>
     )
 }
