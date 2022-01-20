@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Stats from "./Stats"
 
 function PokeCard({selected}) {
     
@@ -70,6 +71,7 @@ function PokeCard({selected}) {
                         {item()}
                     </select>
                     </div>
+                    <Stats stats={pokemon.stats}/>
                </div>
         )}
     }

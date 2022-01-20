@@ -11,13 +11,16 @@ function Pokemon() {
             .then(res => res.json())
             .then(json => setData(json))
     },[])
-
+    
     function option() {
         let array = []
+        if (data === "") {
+            return (<div>Loading...</div>)
+        } else {
         for (let i = 0; i < data.results.length; i++) {
             array.push(data.results[i].name)
         }
-        return array.map((poke) => {return (<option value={poke} key={poke}>{poke}</option>)})
+        return array.map((poke) => {return (<option value={poke} key={poke}>{poke}</option>)})}
     }
 
     function handleChange(e) {
