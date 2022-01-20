@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./NavBar.js";
+import Pokemon from "./Pokemon";
+import Team from "./Team";
+import Roster from "./Roster";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [page, setPage] = useState("/")
+
+    return (
+        <div>
+            <NavBar onChangePage={setPage} />
+            <Routes>
+              <Route exact path="/roster" element={<Roster />}/>  
+              <Route exact path="/team" element={<Team />}/>
+              <Route exact path="/" element={<Pokemon />}/>
+              <Route path="*" element={<h1>404 not found</h1>}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
