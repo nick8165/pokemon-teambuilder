@@ -3,16 +3,118 @@ import React, { useState } from "react"
 function Stats({ stats }) {
 
     const [totalEv, setTotalEv] = useState(510)
+
     const [IvHp, setIvHp] = useState(0)
-    const [IvAtk, setIvatk] = useState(0)
+    const [IvAtk, setIvAtk] = useState(0)
     const [IvDef, setIvDef] = useState(0)
     const [IvSpAtk, setIvSpAtk] = useState(0)
     const [IvSpDef, setIvSpDef] = useState(0)
     const [IvSpd, setIvSpd] = useState(0)
 
-    function handleIvChange(e) {
-
+    function handleIvAddChange(e) {
+        let div = e.target.closest("div")
+        
+        switch(div.id) {
+            case("IV-hp"):
+                if (IvHp < 31) {
+                    setIvHp(IvHp + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-attack"):
+                if (IvAtk < 31) {
+                    setIvAtk(IvAtk + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-defense"):
+                if (IvDef < 31) {
+                    setIvDef(IvDef + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-special-attack"):
+                if (IvSpAtk < 31) {
+                    setIvSpAtk(IvSpAtk + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-special-defense"):
+                if (IvSpDef < 31) {
+                    setIvSpDef(IvSpDef + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-speed"):
+                if (IvSpd < 31) {
+                    setIvSpd(IvSpd + 1);
+                } else {
+                    return(null)
+                }
+                break;
+            default:
+                console.log("default");
+                break; 
+        }
     }
+
+    function handleIvSubChange(e) {
+        let div = e.target.closest("div")
+        
+        switch(div.id) {
+            case("IV-hp"):
+                if (IvHp > 0) {
+                    setIvHp(IvHp - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-attack"):
+                if (IvAtk > 0) {
+                    setIvAtk(IvAtk - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-defense"):
+                if (IvDef > 0) {
+                    setIvDef(IvDef - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-special-attack"):
+                if (IvSpAtk > 0) {
+                    setIvSpAtk(IvSpAtk - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-special-defense"):
+                if (IvSpDef > 0) {
+                    setIvSpDef(IvSpDef - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            case("IV-speed"):
+                if (IvSpd > 0) {
+                    setIvSpd(IvSpd - 1);
+                } else {
+                    return(null)
+                }
+                break;
+            default:
+                console.log("default");
+                break; 
+        }
+    }
+
     return (
         <div>
             <div>
@@ -25,35 +127,35 @@ function Stats({ stats }) {
             </div>
             <div>
                 <h1>IVs</h1>
-                <div key="IV-hp">hp:
-                    <button className="minus">-</button>
+                <div id="IV-hp">hp:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvHp}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
-                <div key="IV-attack">attack:
-                    <button className="minus">-</button>
+                <div id="IV-attack">attack:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvAtk}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
-                <div key="IV-defense">defense:
-                    <button className="minus">-</button>
+                <div id="IV-defense">defense:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvDef}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
-                <div key="IV-special-attack">special-attack:
-                    <button className="minus">-</button>
+                <div id="IV-special-attack">special-attack:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvSpAtk}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
-                <div key="IV-special-defense">special-defense:
-                    <button className="minus">-</button>
+                <div id="IV-special-defense">special-defense:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvSpDef}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
-                <div key="IV-speed">speed:
-                    <button className="minus">-</button>
+                <div id="IV-speed">speed:
+                    <button className="minus" onClick={handleIvSubChange}>-</button>
                     <span>{IvSpd}</span>
-                    <button className="add">+</button>
+                    <button className="add" onClick={handleIvAddChange}>+</button>
                 </div>
             </div>
             <div>
@@ -89,7 +191,7 @@ function Stats({ stats }) {
                     <button className="add">+</button>
                 </div>
                 <b>Total EVs Left</b>
-                <div>{totalEv}</div>
+                <span>{totalEv}</span>
             </div>
         </div>
     )
