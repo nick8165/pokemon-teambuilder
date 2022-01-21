@@ -1,13 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 
 function Stats({ stats }) {
 
-    function extractStats(array) {
-        let newArray = []
-        for (let i =0; i < array.length; i++) {
-            newArray.push(array[i].base_stat)
-        }
-        return newArray.map((move) => {return (<option key={move}>{move}</option>)})
+    const [totalEv, setTotalEv] = useState(510)
+    const [IvHp, setIvHp] = useState(0)
+    const [IvAtk, setIvatk] = useState(0)
+    const [IvDef, setIvDef] = useState(0)
+    const [IvSpAtk, setIvSpAtk] = useState(0)
+    const [IvSpDef, setIvSpDef] = useState(0)
+    const [IvSpd, setIvSpd] = useState(0)
+
+    function handleIvChange(e) {
+
     }
     return (
         <div>
@@ -21,36 +25,71 @@ function Stats({ stats }) {
             </div>
             <div>
                 <h1>IVs</h1>
-                <div key="IV hp">hp:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-hp">hp:
+                    <button className="minus">-</button>
+                    <span>{IvHp}</span>
+                    <button className="add">+</button>
                 </div>
-                <div key="IV attack">attack:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-attack">attack:
+                    <button className="minus">-</button>
+                    <span>{IvAtk}</span>
+                    <button className="add">+</button>
                 </div>
-                <div key="IV defense">defense:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-defense">defense:
+                    <button className="minus">-</button>
+                    <span>{IvDef}</span>
+                    <button className="add">+</button>
                 </div>
-                <div key="IV special-attack">special-attack:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-special-attack">special-attack:
+                    <button className="minus">-</button>
+                    <span>{IvSpAtk}</span>
+                    <button className="add">+</button>
                 </div>
-                <div key="IV special-defense">special-defense:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-special-defense">special-defense:
+                    <button className="minus">-</button>
+                    <span>{IvSpDef}</span>
+                    <button className="add">+</button>
                 </div>
-                <div key="IV speed">speed:
-                    <button>+</button>
-                    <span>0</span>
-                    <button>-</button>
+                <div key="IV-speed">speed:
+                    <button className="minus">-</button>
+                    <span>{IvSpd}</span>
+                    <button className="add">+</button>
                 </div>
+            </div>
+            <div>
+                <h1>EVs</h1>
+                <div key="EV-hp">hp:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <div key="EV-attack">attack:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <div key="EV-defense">defense:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <div key="EV-special-attack">special-attack:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <div key="EV-special-defense">special-defense:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <div key="EV-speed">speed:
+                    <span>0</span>
+                    <button className="minus">-</button>
+                    <button className="add">+</button>
+                </div>
+                <b>Total EVs Left</b>
+                <div>{totalEv}</div>
             </div>
         </div>
     )
