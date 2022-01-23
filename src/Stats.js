@@ -79,6 +79,11 @@ function Stats({ stats }) {
         } else {return null}
     }
 
+    function handleReset() {
+        setEV(prevState => ({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0}))
+        setTotalEV(prevState => (510))
+    }
+
     return (
         <div>
             <table id="base-stats">
@@ -217,6 +222,7 @@ function Stats({ stats }) {
                     <tr id="total-EV">
                         <td>EVs Availiable</td>
                         <td>{totalEV}</td>
+                        <td><button id="reset" onClick={handleReset}>Reset</button></td>
                     </tr>
                 </tbody>
             </table>
