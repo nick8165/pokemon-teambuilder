@@ -43,44 +43,32 @@ function Stats({ stats }) {
     }
 
     function handleEVChange(e) {
-        if(e.key === "Enter" && totalEV - e.target.value >= 0 && e.target.value > -1) {
+        if(e.key === "Enter" && totalEV - e.target.value >= 0 && e.target.value > -1 && e.target.value <= 252) {
             let tr = e.target.closest("tr")
 
             switch(tr.id) {
                 case("EV-hp"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, hp: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, hp: e.target.value}))
                     break;
 
                 case("EV-attack"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, atk: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, atk: e.target.value}))
                     break;
 
                 case("EV-defense"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, def: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, def: e.target.value}))
                     break;
 
                 case("EV-special-attack"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, spatk: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, spatk: e.target.value}))
                     break;
 
                 case("EV-special-defense"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, spdef: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, spdef: e.target.value}))
                     break;
 
                 case("EV-speed"):
-                    if (e.target.value <= 252) {
-                        setEV(prevState => ({...prevState, spd: e.target.value}))
-                    } else {return(null)}
+                    setEV(prevState => ({...prevState, spd: e.target.value}))
                     break;
 
                 default:
