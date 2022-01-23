@@ -3,131 +3,92 @@ import React, { useState } from "react"
 function Stats({ stats }) {
 
     const [totalEV, setTotalEV] = useState(510)
+    const [EV, setEV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
+    const [IV, setIV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
 
-    const [IVHp, setIVHp] = useState(0)
-    const [IVAtk, setIVAtk] = useState(0)
-    const [IVDef, setIVDef] = useState(0)
-    const [IVSpAtk, setIVSpAtk] = useState(0)
-    const [IVSpDef, setIVSpDef] = useState(0)
-    const [IVSpd, setIVSpd] = useState(0)
-
-    const [EVHp, setEVHp] = useState(0)
-    const [EVAtk, setEVAtk] = useState(0)
-    const [EVDef, setEVDef] = useState(0)
-    const [EVSpAtk, setEVSpAtk] = useState(0)
-    const [EVSpDef, setEVSpDef] = useState(0)
-    const [EVSpd, setEVSpd] = useState(0)
-
-    function handleIVAddChange(e) {
-        let tr = e.target.closest("tr")
+    function handleIVChange(e) {
+        if (e.key === "Enter" && e.target.value < 32 && e.target.value > -1) {
+            let tr = e.target.closest("tr")
         
-        switch(tr.id) {
-            case("IV-hp"):
-                if (IVHp < 31) {
-                    setIVHp(IVHp + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-attack"):
-                if (IVAtk < 31) {
-                    setIVAtk(IVAtk + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-defense"):
-                if (IVDef < 31) {
-                    setIVDef(IVDef + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-special-attack"):
-                if (IVSpAtk < 31) {
-                    setIVSpAtk(IVSpAtk + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-special-defense"):
-                if (IVSpDef < 31) {
-                    setIVSpDef(IVSpDef + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-speed"):
-                if (IVSpd < 31) {
-                    setIVSpd(IVSpd + 1);
-                } else {
-                    return(null)
-                }
-                break;
-            default:
-                console.log("default");
-                break; 
-        }
+            switch(tr.id) {
+                case("IV-hp"):
+                    setIV(prevState => ({...prevState, hp: e.target.value}))
+                    break;
+
+                case("IV-attack"):
+                    setIV(prevState => ({...prevState, atk: e.target.value}))
+                    break;
+
+                case("IV-defense"):
+                    setIV(prevState => ({...prevState, def: e.target.value}))
+                    break;
+
+                case("IV-special-attack"):
+                    setIV(prevState => ({...prevState, spatk: e.target.value}))
+                    break;
+
+                case("IV-special-defense"):
+                    setIV(prevState => ({...prevState, spdef: e.target.value}))
+                    break;
+
+                case("IV-speed"):
+                    setIV(prevState => ({...prevState, spd: e.target.value}))
+                    break;
+
+                default:
+                    console.log("default");
+                    break; 
+            }
+        } else {return null}
     }
 
-    function handleIVSubChange(e) {
-        let tr = e.target.closest("tr")
-        
-        switch(tr.id) {
-            case("IV-hp"):
-                if (IVHp > 0) {
-                    setIVHp(IVHp - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-attack"):
-                if (IVAtk > 0) {
-                    setIVAtk(IVAtk - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-defense"):
-                if (IVDef > 0) {
-                    setIVDef(IVDef - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-special-attack"):
-                if (IVSpAtk > 0) {
-                    setIVSpAtk(IVSpAtk - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-special-defense"):
-                if (IVSpDef > 0) {
-                    setIVSpDef(IVSpDef - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            case("IV-speed"):
-                if (IVSpd > 0) {
-                    setIVSpd(IVSpd - 1);
-                } else {
-                    return(null)
-                }
-                break;
-            default:
-                console.log("default");
-                break; 
-        }
-    }
+    function handleEVChange(e) {
+        if(e.key === "Enter" && totalEV - e.target.value >= 0 && e.target.value > -1) {
+            let tr = e.target.closest("tr")
 
-    function handleEVAddChange() {
+            switch(tr.id) {
+                case("EV-hp"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, hp: e.target.value}))
+                    } else {return(null)}
+                    break;
 
-    }
+                case("EV-attack"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, atk: e.target.value}))
+                    } else {return(null)}
+                    break;
 
-    function handleEVSubChange() {
+                case("EV-defense"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, def: e.target.value}))
+                    } else {return(null)}
+                    break;
 
+                case("EV-special-attack"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, spatk: e.target.value}))
+                    } else {return(null)}
+                    break;
+
+                case("EV-special-defense"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, spdef: e.target.value}))
+                    } else {return(null)}
+                    break;
+
+                case("EV-speed"):
+                    if (e.target.value <= 252) {
+                        setEV(prevState => ({...prevState, spd: e.target.value}))
+                    } else {return(null)}
+                    break;
+
+                default:
+                    console.log("default");
+                    break; 
+            }
+            setTotalEV(totalEV => totalEV - e.target.value)
+        } else {return null}
     }
 
     return (
@@ -174,50 +135,44 @@ function Stats({ stats }) {
                 <tbody>
                     <tr id="IV-hp">
                         <td>hp</td>
-                        <td>{IVHp}</td>
+                        <td>{IV.hp}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                        <input type="text" placeholder="IV-hp" className="hp" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                     <tr id="IV-attack">
                         <td>attack</td>
-                        <td>{IVAtk}</td>
+                        <td>{IV.atk}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                        <input type="text" placeholder="IV-attack" className="atk" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                     <tr id="IV-defense">
                         <td>defense</td>
-                        <td>{IVDef}</td>
+                        <td>{IV.def}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                        <input type="text" placeholder="IV-defense" className="def" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                     <tr id="IV-special-attack">
                         <td>special-attack</td>
-                        <td>{IVSpAtk}</td>
+                        <td>{IV.spatk}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                        <input type="text" placeholder="IV-special-attack" className="sp-atk" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                     <tr id="IV-special-defense">
                         <td>special-defense</td>
-                        <td>{IVSpDef}</td>
+                        <td>{IV.spdef}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                        <input type="text" placeholder="IV-special-defense" className="sp-def" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                     <tr id="IV-speed">
                         <td>speed</td>
-                        <td>{IVSpd}</td>
+                        <td>{IV.spd}</td>
                         <td>
-                            <button className="minus" onClick={handleIVSubChange}>-</button>
-                            <button className="add" onClick={handleIVAddChange}>+</button>
+                            <input type="text" placeholder="IV-speed" className="spd" onKeyDown={handleIVChange} />
                         </td>
                     </tr>
                 </tbody>
@@ -231,50 +186,44 @@ function Stats({ stats }) {
                 <tbody>
                     <tr id="EV-hp">
                         <td>hp</td>
-                        <td>0</td>
+                        <td>{EV.hp}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-hp" className="hp" onKeyDown={handleEVChange} />
                         </td>
                     </tr>
                     <tr id="EV-attack">
                         <td>attack</td>
-                        <td>0</td>
+                        <td>{EV.atk}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-attack" className="atk" onKeyDown={handleEVChange} /> 
                         </td>
                     </tr>
                     <tr id="EV-defense">
                         <td>defense</td>
-                        <td>0</td>
+                        <td>{EV.def}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-defense" className="def" onKeyDown={handleEVChange} />
                         </td>
                     </tr>
                     <tr id="EV-special-attack">
                         <td>special-attack</td>
-                        <td>0</td>
+                        <td>{EV.spatk}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-speical-attack" className="sp-atk" onKeyDown={handleEVChange} />
                         </td>
                     </tr>
                     <tr id="EV-special-defense">
                         <td>special-defense</td>
-                        <td>0</td>
+                        <td>{EV.spdef}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-special-defense" className="sp-def" onKeyDown={handleEVChange} />
                         </td>
                     </tr>
                     <tr id="EV-speed">
                         <td>speed</td>
-                        <td>0</td>
+                        <td>{EV.spd}</td>
                         <td>
-                            <button className="minus" onClick={handleEVSubChange}>-</button>
-                            <button className="add" onClick={handleEVAddChange}>+</button>
+                            <input type="text" placeholder="EV-speed" className="spd" onKeyDown={handleEVChange} />
                         </td>
                     </tr>
                     <tr id="total-EV">

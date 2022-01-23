@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Stats from "./Stats"
 
-function PokeCard({selected}) {
+function PokeCard({selected, nature}) {
     
     const [pokemon, setPokemon] = useState("")
     const [itemList, setItemList] = useState("")
+    
 
     useEffect(() => {
-        fetch("https://pokeapi.co/api/v2/item-category/12/")
-            .then(res => res.json())
-            .then(json => setItemList(json))
+        let mounted = true
+        if(mounted) { 
+            fetch("https://pokeapi.co/api/v2/item-category/12/")
+                .then(res => res.json())
+                .then(json => setItemList(json))
+            } return () => mounted = false
     },[])
     
     useEffect(() => {
@@ -17,6 +21,8 @@ function PokeCard({selected}) {
         .then(res => res.json())
         .then(json => setPokemon(json))
     },[selected])
+
+   
 
     function item() {
         let itemArray = []
@@ -40,6 +46,17 @@ function PokeCard({selected}) {
             newArray.push(array[i].move.name)
         }
         return newArray.map((move) => {return (<option key={move}>{move}</option>)})
+    }
+
+    function extractNature() {
+        if (nature === undefined) {
+            return ("...Loading")
+        } else {
+        let natureArray = []
+        for (let i =0; i < nature.length; i++) {
+            natureArray.push(nature[i].name)
+        }
+        return natureArray.map((nat) => {return (<option value={nat} key={nat}>{nat}</option>)})}
     }
 
     function buildCard() {
@@ -66,10 +83,14 @@ function PokeCard({selected}) {
                         {extractMoves(pokemon.moves)}
                     </select>
                     <div>
-                    <select name="item" id="item">
-                        <option value="blank">Held Item</option>
-                        {item()}
-                    </select>
+                        <select name="item" id="item">
+                            <option value="blank">Held Item</option>
+                            {item()}
+                        </select>
+                        <select name="nature" id="nature">
+                            <option value="blank">Nature</option>
+                            {extractNature()}
+                        </select>
                     </div>
                     <Stats stats={pokemon.stats}/>
                </div>

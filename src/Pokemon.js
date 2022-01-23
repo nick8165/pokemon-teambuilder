@@ -5,11 +5,21 @@ function Pokemon() {
 
     const [data, setData] = useState("")
     const [selected, setSelected] = useState("bulbasaur")
+    const [nature, setNature] = useState("")
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
             .then(res => res.json())
             .then(json => setData(json))
+    },[])
+
+    useEffect(() => {
+        let mounted = true;
+        if (mounted) {
+        fetch("https://pokeapi.co/api/v2/nature/")
+            .then(res => res.json())
+            .then(json => setNature(json))
+        } return () => mounted = false;
     },[])
     
     function option() {
@@ -33,7 +43,7 @@ function Pokemon() {
                 <option value="blank">Choose your Pokemon</option>
                 {option(data)}
             </select>
-            <PokeCard selected={selected} />
+            <PokeCard selected={selected} nature={nature.results} />
         </div>
     )
 }
