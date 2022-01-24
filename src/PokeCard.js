@@ -5,7 +5,8 @@ function PokeCard({selected, nature}) {
     
     const [pokemon, setPokemon] = useState("")
     const [itemList, setItemList] = useState("")
-    
+    const [selectedNature, setSelectedNature] = useState("")
+    const [natureData, setNatureData] = useState({decStat: "", incStat: ""})
 
     useEffect(() => {
         let mounted = true
@@ -21,6 +22,15 @@ function PokeCard({selected, nature}) {
         .then(res => res.json())
         .then(json => setPokemon(json))
     },[selected])
+
+    useEffect(() => {
+        if (selectedNature !== "") {
+        fetch(`https://pokeapi.co/api/v2/nature/${selectedNature}`)
+            .then(res => res.json())
+            .then(json => {
+                setNatureData({decStat: json.decreased_stat.name, incStat: json.increased_stat.name})})}
+        else {return null}
+    }, [selectedNature])
 
    
 
@@ -59,6 +69,10 @@ function PokeCard({selected, nature}) {
         return natureArray.map((nat) => {return (<option value={nat} key={nat}>{nat}</option>)})}
     }
 
+    function handleNatureChange(e) {
+        setSelectedNature(e.target.value)
+    }
+
     function buildCard() {
         if (pokemon === "") {
             return (<div>Loading...</div>)
@@ -87,12 +101,12 @@ function PokeCard({selected, nature}) {
                             <option value="blank">Held Item</option>
                             {item()}
                         </select>
-                        <select name="nature" id="nature">
-                            <option value="blank">Nature</option>
+                        <select name="nature" id="nature" onChange={handleNatureChange}>
+                            <option value="">Nature</option>
                             {extractNature()}
                         </select>
                     </div>
-                    <Stats stats={pokemon.stats}/>
+                    <Stats stats={pokemon.stats} natureData={natureData}/>
                </div>
         )}
     }

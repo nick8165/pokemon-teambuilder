@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-function Stats({ stats }) {
+function Stats({ stats, natureData }) {
 
     const [totalEV, setTotalEV] = useState(510)
     const [totalStat, setTotalStat] = useState({hp: stats[0].base_stat, atk: 0, def: 0, spatk: 0, spdef: 0, spd:0})
@@ -38,7 +38,7 @@ function Stats({ stats }) {
                     break;
 
                 default:
-                    console.log("default");
+                    console.log(null);
                     break; 
             }
         } else {return null}
@@ -75,7 +75,7 @@ function Stats({ stats }) {
                     break;
 
                 default:
-                    console.log("default");
+                    console.log(null);
                     break; 
             }
             setTotalEV(totalEV => totalEV - e.target.value)
@@ -89,9 +89,56 @@ function Stats({ stats }) {
 
     useEffect(() => {
         let newhp = (((2 * stats[0].base_stat + IV.hp + EV.hp/4 + 100) * 50) / 100 + 10)
-        console.log(newhp)
-        setTotalStat(prevState => ({...prevState, hp:newhp}))
-    }, [IV, EV])
+        let newatk = (((2 * stats[1].base_stat + IV.atk + EV.atk / 4) * 50)  / 100 + 5)
+        let newdef = (((2 * stats[2].base_stat + IV.def + EV.def / 4) * 50) / 100 + 5)
+        let newspatk = (((2 * stats[3].base_stat + IV.spatk + EV.spatk / 4) * 50) / 100 + 5)
+        let newspdef = (((2 * stats[4].base_stat + IV.spdef + EV.spdef / 4) * 50) / 100 + 5)
+        let newspd = (((2 * stats[5].base_stat + IV.spd + EV.spd / 4) * 50) / 100 + 5)
+
+        switch(natureData.incStat) {
+            case("attack"):
+                newatk = newatk + (newatk * .1)
+                break;
+            case("defense"):
+                newdef = newdef + (newdef * .1)
+                break;
+            case("special-attack"):
+                newspatk = newspatk + (newspatk * .1)
+                break;
+            case("special-defense"):
+                newspdef = newspdef + (newspdef * .1)
+                break;
+            case("speed"):
+                newspd = newspd + (newspd * .1)
+                break;
+            default:
+                console.log(null)
+        }
+
+        switch(natureData.decStat) {
+            case("attack"):
+                newatk = newatk - (newatk * .1)
+                break;
+            case("defense"):
+                newdef = newdef - (newdef * .1)
+                break;
+            case("special-attack"):
+                newspatk = newspatk - (newspatk * .1)
+                break;
+            case("special-defense"):
+                newspdef = newspdef - (newspdef * .1)
+                break;
+            case("speed"):
+                newspd = newspd - (newspd * .1)
+                break;
+            default:
+                console.log(null)
+        }
+
+        setTotalStat(prevState => ({hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
+    }, [IV, EV, natureData])
+
+    
 
     return (
         <div>
@@ -244,27 +291,27 @@ function Stats({ stats }) {
                 <tbody>
                     <tr id="total-hp">
                         <td>hp</td>
-                        <td>{totalStat.hp}</td>
+                        <td>{Math.round(totalStat.hp)}</td>
                     </tr>
                     <tr id="total-attack">
                         <td>attack</td>
-                        <td>0</td>
+                        <td>{Math.round(totalStat.atk)}</td>
                     </tr>
                     <tr id="total-defense">
                         <td>defense</td>
-                        <td>0</td>
+                        <td>{Math.round(totalStat.def)}</td>
                     </tr>
                     <tr id="total-special-attack">
                         <td>special-attack</td>
-                        <td>0</td>
+                        <td>{Math.round(totalStat.spatk)}</td>
                     </tr>
                     <tr id="total-special-defense">
                         <td>special-defense</td>
-                        <td>0</td>
+                        <td>{Math.round(totalStat.spdef)}</td>
                     </tr>
                     <tr id="total-speed">
                         <td>speed</td>
-                        <td>0</td>
+                        <td>{Math.round(totalStat.spd)}</td>
                     </tr>
                 </tbody>
             </table>
