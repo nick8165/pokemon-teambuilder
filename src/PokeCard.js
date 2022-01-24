@@ -4,6 +4,7 @@ import Stats from "./Stats"
 function PokeCard({selected, nature}) {
     
     const [pokemon, setPokemon] = useState("")
+    const [ability, setAbility] = useState("")
     const [itemList, setItemList] = useState("")
     const [selectedItem, setSelectedItem] = useState("")
     const [selectedNature, setSelectedNature] = useState("")
@@ -37,7 +38,13 @@ function PokeCard({selected, nature}) {
         else {console.log(null)}
     }, [selectedNature])
 
-   
+    function extractAbilities() {
+        let abilityArray = []
+        for (let i = 0; i < pokemon.abilities.length; i++) {
+            abilityArray.push(pokemon.abilities[i].ability.name)
+        }
+        return abilityArray.map((abi) => {return (<option value={abi} key={abi}>{abi}</option>)})
+    }
 
     function item() {
         let itemArray = []
@@ -80,6 +87,10 @@ function PokeCard({selected, nature}) {
 
     function handleItemChange(e) {
         setSelectedItem(e.target.value)
+    }
+
+    function handleAbilityChange(e) {
+        setAbility(e.target.value)
     }
 
     function handleMoveSet(e) {
@@ -125,6 +136,10 @@ function PokeCard({selected, nature}) {
                         {extractMoves(pokemon.moves)}
                     </select>
                     <div>
+                        <select name="ability" id="ability" onChange={handleAbilityChange}>
+                            <option value="blank">Ability</option>
+                            {extractAbilities()}
+                        </select>
                         <select name="item" id="item" onChange={handleItemChange}>
                             <option value="blank">Held Item</option>
                             {item()}
@@ -134,7 +149,7 @@ function PokeCard({selected, nature}) {
                             {extractNature()}
                         </select>
                     </div>
-                    <Stats stats={pokemon.stats} natureData={natureData}/>
+                    <Stats stats={pokemon.stats} natureData={natureData} selectedItem={selectedItem} moveSet={moveSet} pokemon={pokemon} selectedNature={selectedNature} ability={ability}/>
                </div>
         )}
     }

@@ -6,7 +6,6 @@ function Pokemon() {
     const [data, setData] = useState("")
     const [selected, setSelected] = useState("bulbasaur")
     const [nature, setNature] = useState("")
-    const [buildName, setBuildName] = useState("")
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
@@ -38,15 +37,6 @@ function Pokemon() {
         setSelected(e.target.value)
     }
 
-    function handleBuildName(e) {
-        setBuildName(e.target.value)
-    }
-
-    function handleBuild(e) {
-        e.preventDefault()
-        console.log("works")
-    }
-
     return (
         <div>
             <select name="select" id="select" onChange={handleChange}>
@@ -54,10 +44,6 @@ function Pokemon() {
                 {option(data)}
             </select>
             <PokeCard selected={selected} nature={nature.results} />
-            <form id="poke-form" className="form">
-                <input type="text" placeholder="Name of Build" onChange={handleBuildName} />
-                <button type="submit" onClick={handleBuild}>Save Build</button>
-            </form>
         </div>
     )
 }

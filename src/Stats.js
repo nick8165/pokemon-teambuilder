@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react"
 
-function Stats({ stats, natureData }) {
+function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNature, ability }) {
 
     const [totalEV, setTotalEV] = useState(510)
     const [totalStat, setTotalStat] = useState({hp: stats[0].base_stat, atk: 0, def: 0, spatk: 0, spdef: 0, spd:0})
     const [EV, setEV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
     const [IV, setIV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
+    const [buildName, setBuildName] = useState("")
 
     function handleIVChange(e) {
         let int = parseInt(e.target.value)
@@ -137,6 +138,37 @@ function Stats({ stats, natureData }) {
 
         setTotalStat(prevState => ({hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
     }, [IV, EV, natureData])
+
+    function handleBuildName(e) {
+        setBuildName(e.target.value)
+    }
+
+    function handleBuild(e) {
+        e.preventDefault()
+        if (buildName === "") {
+            alert("Must give a build name")
+        } else {
+            let data = {
+                buildName: buildName,
+                name: pokemon.name,
+                moveset: [moveSet.move1, moveSet.move2, moveSet.move3, moveSet.move4],
+                ability: ability,
+                heldItem: selectedItem,
+                nature: selectedNature,
+                IV: [IV.hp, IV.atk, IV.def, IV.spatk, IV.spdef, IV.spd],
+                EV: [EV.hp, EV.atk, EV.def, EV.spatk, EV.spdef, EV.spd],
+                totalStats: [totalStat.hp, totalStat.atk, totalStat.def, totalStat.spatk, totalStat.spdef, totalStat.spd]
+              };
+            fetch("http://localhost:8000/pokemon", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data),
+            }) 
+            .then(res => {
+                console.log(res)
+            });
+        }
+    }
 
     
 
@@ -315,6 +347,10 @@ function Stats({ stats, natureData }) {
                     </tr>
                 </tbody>
             </table>
+            <form id="poke-form" className="form">
+                <input type="text" placeholder="Name of Build" onChange={handleBuildName} />
+                <button type="submit" onClick={handleBuild}>Save Build</button>
+            </form>
         </div>
     )
 }
