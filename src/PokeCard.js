@@ -5,6 +5,7 @@ function PokeCard({selected, nature}) {
     
     const [pokemon, setPokemon] = useState("")
     const [itemList, setItemList] = useState("")
+    const [selectedItem, setSelectedItem] = useState("")
     const [selectedNature, setSelectedNature] = useState("")
     const [natureData, setNatureData] = useState({decStat: "", incStat: ""})
     const [moveSet, setMoveSet] = useState({move1: "", move2: "", move3: "", move4: ""})
@@ -77,6 +78,10 @@ function PokeCard({selected, nature}) {
         setSelectedNature(e.target.value)
     }
 
+    function handleItemChange(e) {
+        setSelectedItem(e.target.value)
+    }
+
     function handleMoveSet(e) {
         switch(e.target.id) {
             case('move1'):
@@ -120,7 +125,7 @@ function PokeCard({selected, nature}) {
                         {extractMoves(pokemon.moves)}
                     </select>
                     <div>
-                        <select name="item" id="item">
+                        <select name="item" id="item" onChange={handleItemChange}>
                             <option value="blank">Held Item</option>
                             {item()}
                         </select>
