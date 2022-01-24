@@ -291,27 +291,27 @@ function Stats({ stats, natureData }) {
                 <tbody>
                     <tr id="total-hp">
                         <td>hp</td>
-                        <td>{Math.round(totalStat.hp)}</td>
+                        <td>{Math.floor(totalStat.hp)}</td>
                     </tr>
                     <tr id="total-attack">
                         <td>attack</td>
-                        <td>{Math.round(totalStat.atk)}</td>
+                        <td>{Math.floor(totalStat.atk)}</td>
                     </tr>
                     <tr id="total-defense">
                         <td>defense</td>
-                        <td>{Math.round(totalStat.def)}</td>
+                        <td>{Math.floor(totalStat.def)}</td>
                     </tr>
                     <tr id="total-special-attack">
                         <td>special-attack</td>
-                        <td>{Math.round(totalStat.spatk)}</td>
+                        <td>{Math.floor(totalStat.spatk)}</td>
                     </tr>
                     <tr id="total-special-defense">
                         <td>special-defense</td>
-                        <td>{Math.round(totalStat.spdef)}</td>
+                        <td>{Math.floor(totalStat.spdef)}</td>
                     </tr>
                     <tr id="total-speed">
                         <td>speed</td>
-                        <td>{Math.round(totalStat.spd)}</td>
+                        <td>{Math.floor(totalStat.spd)}</td>
                     </tr>
                 </tbody>
             </table>

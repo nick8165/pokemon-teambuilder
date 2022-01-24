@@ -27,9 +27,12 @@ function PokeCard({selected, nature}) {
         if (selectedNature !== "") {
         fetch(`https://pokeapi.co/api/v2/nature/${selectedNature}`)
             .then(res => res.json())
-            .then(json => {
-                setNatureData({decStat: json.decreased_stat.name, incStat: json.increased_stat.name})})}
-        else {return null}
+            .then(json => { 
+                if (selectedNature === "bashful" || selectedNature === "docile" || selectedNature === "hardy" || selectedNature === "quirky" || selectedNature === "serious") {
+                    setNatureData({decStat: "", incStat: ""})
+                } else {setNatureData({decStat: json.decreased_stat.name, incStat: json.increased_stat.name})}
+            })}
+        else {console.log(null)}
     }, [selectedNature])
 
    
