@@ -7,6 +7,7 @@ function PokeCard({selected, nature}) {
     const [itemList, setItemList] = useState("")
     const [selectedNature, setSelectedNature] = useState("")
     const [natureData, setNatureData] = useState({decStat: "", incStat: ""})
+    const [moveSet, setMoveSet] = useState({move1: "", move2: "", move3: "", move4: ""})
 
     useEffect(() => {
         let mounted = true
@@ -76,6 +77,25 @@ function PokeCard({selected, nature}) {
         setSelectedNature(e.target.value)
     }
 
+    function handleMoveSet(e) {
+        switch(e.target.id) {
+            case('move1'):
+                setMoveSet(prevState => ({...prevState, move1: e.target.value}))
+                break;
+            case('move2'):
+                setMoveSet(prevState => ({...prevState, move2: e.target.value}))
+                break;
+            case('move3'):
+                setMoveSet(prevState => ({...prevState, move3: e.target.value}))
+                break;
+            case('move4'):
+                setMoveSet(prevState => ({...prevState, move4: e.target.value}))
+                break;
+            default:
+                console.log(null)
+        }
+    }
+
     function buildCard() {
         if (pokemon === "") {
             return (<div>Loading...</div>)
@@ -83,19 +103,19 @@ function PokeCard({selected, nature}) {
         return (<div>
                     <img src={pokemon.sprites.front_default} alt="Pokemon"/>
                     {extractType(pokemon.types)}
-                    <select name="move" id="move1">
+                    <select name="move" id="move1" onChange={handleMoveSet}>
                         <option value="blank">Move Slot 1</option>
                         {extractMoves(pokemon.moves)}
                     </select>
-                    <select name="move" id="move2">
+                    <select name="move" id="move2" onChange={handleMoveSet}>
                         <option value="blank">Move Slot 2</option>
                         {extractMoves(pokemon.moves)}
                     </select>
-                    <select name="move" id="move3">
+                    <select name="move" id="move3" onChange={handleMoveSet}>
                         <option value="blank">Move Slot 3</option>
                         {extractMoves(pokemon.moves)}
                     </select>
-                    <select name="move" id="move4">
+                    <select name="move" id="move4" onChange={handleMoveSet}>
                         <option value="blank">Move Slot 4</option>
                         {extractMoves(pokemon.moves)}
                     </select>
