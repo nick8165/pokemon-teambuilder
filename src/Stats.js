@@ -1,38 +1,40 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function Stats({ stats }) {
 
     const [totalEV, setTotalEV] = useState(510)
+    const [totalStat, setTotalStat] = useState({hp: stats[0].base_stat, atk: 0, def: 0, spatk: 0, spdef: 0, spd:0})
     const [EV, setEV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
     const [IV, setIV] = useState({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0})
 
     function handleIVChange(e) {
-        if (e.key === "Enter" && e.target.value < 32 && e.target.value > -1) {
+        let int = parseInt(e.target.value)
+        if (e.key === "Enter" && int < 32 && int > -1) {
             let tr = e.target.closest("tr")
         
             switch(tr.id) {
                 case("IV-hp"):
-                    setIV(prevState => ({...prevState, hp: e.target.value}))
+                    setIV(prevState => ({...prevState, hp: int}))
                     break;
 
                 case("IV-attack"):
-                    setIV(prevState => ({...prevState, atk: e.target.value}))
+                    setIV(prevState => ({...prevState, atk: int}))
                     break;
 
                 case("IV-defense"):
-                    setIV(prevState => ({...prevState, def: e.target.value}))
+                    setIV(prevState => ({...prevState, def: int}))
                     break;
 
                 case("IV-special-attack"):
-                    setIV(prevState => ({...prevState, spatk: e.target.value}))
+                    setIV(prevState => ({...prevState, spatk: int}))
                     break;
 
                 case("IV-special-defense"):
-                    setIV(prevState => ({...prevState, spdef: e.target.value}))
+                    setIV(prevState => ({...prevState, spdef: int}))
                     break;
 
                 case("IV-speed"):
-                    setIV(prevState => ({...prevState, spd: e.target.value}))
+                    setIV(prevState => ({...prevState, spd: int}))
                     break;
 
                 default:
@@ -43,32 +45,33 @@ function Stats({ stats }) {
     }
 
     function handleEVChange(e) {
-        if(e.key === "Enter" && totalEV - e.target.value >= 0 && e.target.value > -1 && e.target.value <= 252) {
+        let int = parseInt(e.target.value)
+        if(e.key === "Enter" && totalEV - int >= 0 && int > -1 && int <= 252) {
             let tr = e.target.closest("tr")
 
             switch(tr.id) {
                 case("EV-hp"):
-                    setEV(prevState => ({...prevState, hp: e.target.value}))
+                    setEV(prevState => ({...prevState, hp: int}))
                     break;
 
                 case("EV-attack"):
-                    setEV(prevState => ({...prevState, atk: e.target.value}))
+                    setEV(prevState => ({...prevState, atk: int}))
                     break;
 
                 case("EV-defense"):
-                    setEV(prevState => ({...prevState, def: e.target.value}))
+                    setEV(prevState => ({...prevState, def: int}))
                     break;
 
                 case("EV-special-attack"):
-                    setEV(prevState => ({...prevState, spatk: e.target.value}))
+                    setEV(prevState => ({...prevState, spatk: int}))
                     break;
 
                 case("EV-special-defense"):
-                    setEV(prevState => ({...prevState, spdef: e.target.value}))
+                    setEV(prevState => ({...prevState, spdef: int}))
                     break;
 
                 case("EV-speed"):
-                    setEV(prevState => ({...prevState, spd: e.target.value}))
+                    setEV(prevState => ({...prevState, spd: int}))
                     break;
 
                 default:
@@ -83,6 +86,12 @@ function Stats({ stats }) {
         setEV(prevState => ({hp: 0, atk: 0, def: 0, spatk: 0, spdef: 0, spd: 0}))
         setTotalEV(prevState => (510))
     }
+
+    useEffect(() => {
+        let newhp = (((2 * stats[0].base_stat + IV.hp + EV.hp/4 + 100) * 50) / 100 + 10)
+        console.log(newhp)
+        setTotalStat(prevState => ({...prevState, hp:newhp}))
+    }, [IV, EV])
 
     return (
         <div>
@@ -235,7 +244,7 @@ function Stats({ stats }) {
                 <tbody>
                     <tr id="total-hp">
                         <td>hp</td>
-                        <td>0</td>
+                        <td>{totalStat.hp}</td>
                     </tr>
                     <tr id="total-attack">
                         <td>attack</td>
