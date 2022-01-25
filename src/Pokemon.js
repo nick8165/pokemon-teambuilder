@@ -24,11 +24,12 @@ function Pokemon() {
     
     function option() {
         let array = []
+        let newData = {...data}
         if (data === "") {
-            return (<div>Loading...</div>)
+            return (null)
         } else {
-        for (let i = 0; i < data.results.length; i++) {
-            array.push(data.results[i].name)
+        for (let i = 0; i < newData.results.length; i++) {
+            array.push(newData.results[i].name)
         }
         return array.map((poke) => {return (<option value={poke} key={poke}>{poke}</option>)})}
     }
@@ -41,7 +42,7 @@ function Pokemon() {
         <div>
             <select name="select" id="select" onChange={handleChange}>
                 <option value="blank">Choose your Pokemon</option>
-                {option(data)}
+                {option()}
             </select>
             <PokeCard selected={selected} nature={nature.results} />
         </div>

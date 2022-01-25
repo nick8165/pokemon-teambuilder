@@ -74,6 +74,44 @@
         133
       ],
       "id": 2
+    },
+    {
+      "buildName": "charizard",
+      "name": "charizard",
+      "moveset": [
+        "swords-dance",
+        "cut",
+        "thunder-punch",
+        "mega-kick"
+      ],
+      "ability": "solar-power",
+      "heldItem": "mental-herb",
+      "nature": "modest",
+      "IV": [
+        31,
+        31,
+        31,
+        0,
+        0,
+        0
+      ],
+      "EV": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "totalStats": [
+        153.5,
+        94.05,
+        98.5,
+        125.4,
+        90,
+        105
+      ],
+      "id": 3
     }
   ]
 }

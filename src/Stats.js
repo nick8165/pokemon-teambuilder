@@ -137,7 +137,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
         }
 
         setTotalStat(prevState => ({hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
-    }, [IV, EV, natureData])
+    }, [IV, EV, natureData, pokemon])
 
     function handleBuildName(e) {
         setBuildName(e.target.value)

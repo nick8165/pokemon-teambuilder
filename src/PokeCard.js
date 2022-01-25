@@ -40,32 +40,36 @@ function PokeCard({selected, nature}) {
 
     function extractAbilities() {
         let abilityArray = []
-        for (let i = 0; i < pokemon.abilities.length; i++) {
-            abilityArray.push(pokemon.abilities[i].ability.name)
+        let newAbility = {...pokemon}
+        for (let i = 0; i < newAbility.abilities.length; i++) {
+            abilityArray.push(newAbility.abilities[i].ability.name)
         }
         return abilityArray.map((abi) => {return (<option value={abi} key={abi}>{abi}</option>)})
     }
 
     function item() {
         let itemArray = []
-        for (let i = 0; i < itemList.items.length; i++) {
-            itemArray.push(itemList.items[i].name)
+        let newItem = {...itemList}
+        for (let i = 0; i < newItem.items.length; i++) {
+            itemArray.push(newItem.items[i].name)
         }
         return itemArray.map((item) => {return (<option value={item} key={item}>{item}</option>)})
     }
 
     function extractType(array) {
         let newArray = []
-        for (let i =0; i < array.length; i++) {
-            newArray.push(array[i].type.name)
+        let newType = {...array}
+        for (let i =0; i < newType.length; i++) {
+            newArray.push(newType[i].type.name)
         }
         return newArray.map((type) => {return (<div key={type} className={type}>{type}</div>)})
     }
 
     function extractMoves(array) {
         let newArray = []
-        for (let i =0; i < array.length; i++) {
-            newArray.push(array[i].move.name)
+        let newMove = [...array]
+        for (let i =0; i < newMove.length; i++) {
+            newArray.push(newMove[i].move.name)
         }
         return newArray.map((move) => {return (<option key={move}>{move}</option>)})
     }
@@ -75,8 +79,9 @@ function PokeCard({selected, nature}) {
             return ("...Loading")
         } else {
         let natureArray = []
-        for (let i =0; i < nature.length; i++) {
-            natureArray.push(nature[i].name)
+        let newNature = [...nature]
+        for (let i =0; i < newNature.length; i++) {
+            natureArray.push(newNature[i].name)
         }
         return natureArray.map((nat) => {return (<option value={nat} key={nat}>{nat}</option>)})}
     }

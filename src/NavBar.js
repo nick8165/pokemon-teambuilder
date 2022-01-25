@@ -6,7 +6,7 @@ function NavBar() {
     return (
         <div id="nav">
             <nav className="nav">
-                <NavLink exact to="/" className="link">Pokemon</NavLink>
+                <NavLink  to="/" className="link">Pokemon</NavLink>
                 <NavLink to="/roster" className="link">Roster</NavLink>
                 <NavLink to="/team" className="link">Team</NavLink>
             </nav>
