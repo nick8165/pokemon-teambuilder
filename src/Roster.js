@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Container } from "react-bootstrap"
+import { Card, Container, Row, Col } from "react-bootstrap"
 
 function Roster() {
 
@@ -57,30 +57,39 @@ function Roster() {
         if (slot === "") {
             return (<div>
                         <Card.Img src="https://www.seekpng.com/png/detail/13-137344_pokeball-pokeball-png.png" alt="Pokeball - Pokeball Png@seekpng.com" width="250" height="200"/>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>Move 1</td>
-                                    <td>Move 2</td>
-                                    <td>Move 3</td>
-                                    <td>Move 4</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <Row>
+                            <Col>Move 1</Col>
+                            <Col>Move 2</Col>  
+                            <Col>Move 3</Col>  
+                            <Col>Move 4</Col>          
+                        </Row>        
                     </div>
             )
         } else {
             return (<div>
                         <Card.Img src={slot[0].img} width="250" height="200" />
-                        <table>
-                            <tbody>
-                                <tr>
-                                {slot[0].moveset.map((move) => {
-                                    return (<td key={move}>{move}</td>)
-                                })}
-                                </tr>
-                            </tbody>
-                        </table>
+                        <Row>
+                            {slot[0].moveset.map((move) => {
+                                    return (<Col key={move}>{move}</Col>)
+                                })}          
+                        </Row>
+                        <Row>
+                            <Col>{slot[0].nature}</Col>
+                            <Col>{slot[0].heldItem}</Col>    
+                        </Row>
+                        <Row>
+                            <Col>hp</Col>
+                            <Col>attack</Col>
+                            <Col>defense</Col>
+                            <Col>special-attack</Col>
+                            <Col>special-defense</Col>
+                            <Col>speed</Col>
+                        </Row>
+                        <Row>
+                            {slot[0].totalStats.map((stat) => {
+                                return (<Col>{stat}</Col>)
+                            })}
+                        </Row>        
                     </div>    
                         )
             }
@@ -97,8 +106,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 1
                     </Card.Title>
+                    {handleSlot(slotOne)}
                 </Card.Body>
-                {handleSlot(slotOne)}
             </Card>
             <Card>
                 <select id="slot2" onChange={handleChange}>add pokemon to team
@@ -109,8 +118,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 2
                     </Card.Title>
+                    {handleSlot(slotTwo)}
                 </Card.Body>
-                {handleSlot(slotTwo)}
             </Card>
             <Card>
                 <select id="slot3" onChange={handleChange}>add pokemon to team
@@ -121,8 +130,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 3
                     </Card.Title>
+                    {handleSlot(slotThree)}
                 </Card.Body>
-                {handleSlot(slotThree)}
             </Card>
             <Card>
                 <select id="slot4" onChange={handleChange}>add pokemon to team
@@ -133,8 +142,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 4
                     </Card.Title>
+                    {handleSlot(slotFour)}
                 </Card.Body>
-                {handleSlot(slotFour)}
             </Card>
             <Card>
                 <select id="slot5" onChange={handleChange}>add pokemon to team
@@ -145,8 +154,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 5
                     </Card.Title>
+                    {handleSlot(slotFive)}
                 </Card.Body>
-                {handleSlot(slotFive)}
             </Card>
             <Card>
                 <select id="slot6" onChange={handleChange}>add pokemon to team
@@ -157,8 +166,8 @@ function Roster() {
                     <Card.Title>
                         SLOT 6
                     </Card.Title>
+                    {handleSlot(slotSix)}
                 </Card.Body>
-                {handleSlot(slotSix)}
             </Card>
         </Container>
     )
