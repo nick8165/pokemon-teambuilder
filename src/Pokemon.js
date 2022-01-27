@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container"
 import PokeCard from "./PokeCard"
 
 function Pokemon() {
@@ -39,13 +40,13 @@ function Pokemon() {
     }
 
     return (
-        <div>
+        <Container>
             <select name="select" id="select" onChange={handleChange}>
                 <option value="blank">Choose your Pokemon</option>
                 {option()}
             </select>
             <PokeCard selected={selected} nature={nature.results} />
-        </div>
+        </Container>
     )
 }
 

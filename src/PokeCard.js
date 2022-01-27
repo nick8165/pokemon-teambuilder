@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container"
 import Stats from "./Stats"
 
 function PokeCard({selected, nature}) {
@@ -39,51 +40,31 @@ function PokeCard({selected, nature}) {
     }, [selectedNature])
 
     function extractAbilities() {
-        let abilityArray = []
         let newAbility = {...pokemon}
-        for (let i = 0; i < newAbility.abilities.length; i++) {
-            abilityArray.push(newAbility.abilities[i].ability.name)
-        }
-        return abilityArray.map((abi) => {return (<option value={abi} key={abi}>{abi}</option>)})
+        return newAbility.abilities.map((abi) => {return (<option value={abi.ability.name} key={abi.ability.name}>{abi.ability.name}</option>)})
     }
 
     function item() {
-        let itemArray = []
         let newItem = {...itemList}
-        for (let i = 0; i < newItem.items.length; i++) {
-            itemArray.push(newItem.items[i].name)
-        }
-        return itemArray.map((item) => {return (<option value={item} key={item}>{item}</option>)})
+        return newItem.items.map((item) => {return (<option value={item.name} key={item.name}>{item.name}</option>)})
     }
 
     function extractType(array) {
-        let newArray = []
-        let newType = {...array}
-        for (let i =0; i < newType.length; i++) {
-            newArray.push(newType[i].type.name)
-        }
-        return newArray.map((type) => {return (<div key={type} className={type}>{type}</div>)})
+        let newType = [...array]
+        return newType.map((types) => {return (<div key={types.type.name} className={types.type.name}>{types.type.name}</div>)})
     }
 
     function extractMoves(array) {
-        let newArray = []
         let newMove = [...array]
-        for (let i =0; i < newMove.length; i++) {
-            newArray.push(newMove[i].move.name)
-        }
-        return newArray.map((move) => {return (<option key={move}>{move}</option>)})
+        return newMove.map((moves) => {return (<option key={moves.move.name}>{moves.move.name}</option>)})
     }
 
     function extractNature() {
         if (nature === undefined) {
             return ("...Loading")
         } else {
-        let natureArray = []
         let newNature = [...nature]
-        for (let i =0; i < newNature.length; i++) {
-            natureArray.push(newNature[i].name)
-        }
-        return natureArray.map((nat) => {return (<option value={nat} key={nat}>{nat}</option>)})}
+        return newNature.map((nat) => {return (<option value={nat.name} key={nat.name}>{nat.name}</option>)})}
     }
 
     function handleNatureChange(e) {
@@ -121,7 +102,7 @@ function PokeCard({selected, nature}) {
         if (pokemon === "") {
             return (<div>Loading...</div>)
         } else {
-        return (<div>
+        return (<Container>
                     <img src={pokemon.sprites.front_default} alt="Pokemon"/>
                     {extractType(pokemon.types)}
                     <select name="move" id="move1" onChange={handleMoveSet}>
@@ -155,7 +136,7 @@ function PokeCard({selected, nature}) {
                         </select>
                     </div>
                     <Stats stats={pokemon.stats} natureData={natureData} selectedItem={selectedItem} moveSet={moveSet} pokemon={pokemon} selectedNature={selectedNature} ability={ability}/>
-               </div>
+               </Container>
         )}
     }
 

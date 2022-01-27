@@ -1,117 +1,121 @@
 {
-  "pokemon": [
+  "pokemon": [ 
     {
-      "id": 1,
-      "buildName": "default",
-      "name": "bulbasaur",
-      "moveset": [
-        "move1",
-        "move2",
-        "move3",
-        "move4"
-      ],
-      "heldItem": "leftovers",
-      "nature": "modest",
-      "IV": [
-        "hp",
-        "atk",
-        "def",
-        "spatk",
-        "spdef",
-        "spd"
-      ],
-      "EV": [
-        "hp",
-        "atk",
-        "def",
-        "spatk",
-        "spdef",
-        "spd"
-      ],
-      "totalStats": [
-        "hp",
-        "atk",
-        "def",
-        "spatk",
-        "spdef",
-        "spd"
+      "roster": [
+        {
+          "id": 1,
+          "buildName": "default",
+          "name": "bulbasaur",
+          "moveset": [
+            "move1",
+            "move2",
+            "move3",
+            "move4"
+          ],
+          "heldItem": "leftovers",
+          "nature": "modest",
+          "IV": [
+            "hp",
+            "atk",
+            "def",
+            "spatk",
+            "spdef",
+            "spd"
+          ],
+          "EV": [
+            "hp",
+            "atk",
+            "def",
+            "spatk",
+            "spdef",
+            "spd"
+          ],
+          "totalStats": [
+            "hp",
+            "atk",
+            "def",
+            "spatk",
+            "spdef",
+            "spd"
+          ]
+        },
+        {
+          "buildName": "gyarados test build",
+          "name": "gyarados",
+          "moveset": [
+            "waterfall",
+            "iron-tail",
+            "double-edge",
+            "thrash"
+          ],
+          "ability": "intimidate",
+          "heldItem": "big-root",
+          "nature": "adamant",
+          "IV": [
+            31,
+            31,
+            31,
+            31,
+            31,
+            31
+          ],
+          "EV": [
+            0,
+            252,
+            0,
+            0,
+            6,
+            252
+          ],
+          "totalStats": [
+            170.5,
+            194.7,
+            99.5,
+            72.45,
+            121.25,
+            133
+          ],
+          "id": 2
+        },
+        {
+          "buildName": "charizard",
+          "name": "charizard",
+          "moveset": [
+            "swords-dance",
+            "cut",
+            "thunder-punch",
+            "mega-kick"
+          ],
+          "ability": "solar-power",
+          "heldItem": "mental-herb",
+          "nature": "modest",
+          "IV": [
+            31,
+            31,
+            31,
+            0,
+            0,
+            0
+          ],
+          "EV": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "totalStats": [
+            153.5,
+            94.05,
+            98.5,
+            125.4,
+            90,
+            105
+          ],
+          "id": 3
+        }
       ]
-    },
-    {
-      "buildName": "gyarados test build",
-      "name": "gyarados",
-      "moveset": [
-        "waterfall",
-        "iron-tail",
-        "double-edge",
-        "thrash"
-      ],
-      "ability": "intimidate",
-      "heldItem": "big-root",
-      "nature": "adamant",
-      "IV": [
-        31,
-        31,
-        31,
-        31,
-        31,
-        31
-      ],
-      "EV": [
-        0,
-        252,
-        0,
-        0,
-        6,
-        252
-      ],
-      "totalStats": [
-        170.5,
-        194.7,
-        99.5,
-        72.45,
-        121.25,
-        133
-      ],
-      "id": 2
-    },
-    {
-      "buildName": "charizard",
-      "name": "charizard",
-      "moveset": [
-        "swords-dance",
-        "cut",
-        "thunder-punch",
-        "mega-kick"
-      ],
-      "ability": "solar-power",
-      "heldItem": "mental-herb",
-      "nature": "modest",
-      "IV": [
-        31,
-        31,
-        31,
-        0,
-        0,
-        0
-      ],
-      "EV": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "totalStats": [
-        153.5,
-        94.05,
-        98.5,
-        125.4,
-        90,
-        105
-      ],
-      "id": 3
     }
   ]
 }
