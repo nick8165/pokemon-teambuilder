@@ -5,6 +5,7 @@
         {
           "id": 1,
           "buildName": "default",
+          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
           "name": "bulbasaur",
           "moveset": [
             "move1",
@@ -41,6 +42,7 @@
         },
         {
           "buildName": "gyarados test build",
+          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
           "name": "gyarados",
           "moveset": [
             "waterfall",
@@ -79,6 +81,7 @@
         },
         {
           "buildName": "charizard",
+          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
           "name": "charizard",
           "moveset": [
             "swords-dance",

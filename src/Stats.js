@@ -151,6 +151,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
         } else {
             let data = {
                 buildName: buildName,
+                img: pokemon.sprites.front_default,
                 name: pokemon.name,
                 moveset: [moveSet.move1, moveSet.move2, moveSet.move3, moveSet.move4],
                 ability: ability,
