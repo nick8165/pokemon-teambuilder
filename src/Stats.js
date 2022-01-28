@@ -147,7 +147,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
     function handleBuild(e) {
         e.preventDefault()
         if (buildName === "") {
-            alert("Must give a build name")
+            Window.alert("Must give a build name")
         } else {
             let data = {
                 buildName: buildName,

@@ -10,6 +10,7 @@ function Roster() {
     const [slotFour, setSlotFour] = useState("")
     const [slotFive, setSlotFive] = useState("")
     const [slotSix, setSlotSix] = useState("")
+    const [teamName, setTeamName] = useState("")
 
     useEffect(() => {
         fetch(`http://localhost:8000/pokemon`)
@@ -21,14 +22,15 @@ function Roster() {
         if (pokeroster === "") {
             return null
         } else {
-            let newRoster = {...pokeroster}
-            return newRoster[0].roster.map((ros) => {return (<option value={ros.buildName} key={ros.buildName}>{ros.buildName}</option>)})
+            let num = 50
+            let newRoster = [...pokeroster]
+            return newRoster.map((ros) => {return (<option key={num++} value={ros.buildName}>{ros.buildName}</option>)})
         }
     }
 
     function handleChange(e) {
-        let newSlot = {...pokeroster}
-        let filter = newSlot[0].roster.filter((fil) => fil.buildName === e.target.value)
+        let newSlot = [...pokeroster]
+        let filter = newSlot.filter((fil) => fil.buildName === e.target.value)
         switch(e.target.id) {
             case("slot1"):
                 setSlotOne(filter)
@@ -70,7 +72,7 @@ function Roster() {
                         <Card.Img src={slot[0].img} width="250" height="200" />
                         <Row>
                             {slot[0].moveset.map((move) => {
-                                    return (<Col key={move}>{move}</Col>)
+                                    return (<Col>{move}</Col>)
                                 })}          
                         </Row>
                         <Row>
@@ -93,6 +95,31 @@ function Roster() {
                     </div>    
                         )
             }
+    }
+
+    function handleTeamName(e) {
+        setTeamName(e.target.value)
+    }
+
+    function handleTeam(e) {
+        e.preventDefault()
+        let teamData = {
+            name: teamName,
+          slot1: slotOne,
+          slot2: slotTwo,
+          slot3: slotThree,
+          slot4: slotFour,
+          slot5: slotFive,
+          slot6: slotSix
+        }
+        fetch("http://localhost:8000/team", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(teamData),
+            }) 
+            .then(res => {
+                console.log(res)
+            })
     }
 
     return (
@@ -169,6 +196,12 @@ function Roster() {
                     {handleSlot(slotSix)}
                 </Card.Body>
             </Card>
+            <div>
+                <form id="teamForm">
+                    <input type="text" placeholder="Team Name" onChange={handleTeamName}/>
+                    <button type="submit" onClick={handleTeam}>Save Team</button>
+                </form>
+            </div>
         </Container>
     )
 }
