@@ -105,12 +105,13 @@ function Roster() {
         e.preventDefault()
         let teamData = {
             name: teamName,
-          slot1: slotOne,
-          slot2: slotTwo,
-          slot3: slotThree,
-          slot4: slotFour,
-          slot5: slotFive,
-          slot6: slotSix
+            slots: [{
+          slot1: [slotOne[0].buildName, slotOne[0].img],
+          slot2: [slotTwo[0].buildName, slotTwo[0].img],
+          slot3: [slotThree[0].buildName, slotThree[0].img],
+          slot4: [slotFour[0].buildName, slotFour[0].img],
+          slot5: [slotFive[0].buildName, slotFive[0].img],
+          slot6: [slotSix[0].buildName, slotSix[0].img]}]
         }
         fetch("http://localhost:8000/team", {
                 method: "POST",

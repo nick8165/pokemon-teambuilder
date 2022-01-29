@@ -137,7 +137,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
                 console.log(null)
         }
 
-        setTotalStat(prevState => ({hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
+        setTotalStat(prevState => ({...prevState, hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
     }, [IV, EV, natureData, pokemon])
 
     function handleBuildName(e) {
@@ -147,7 +147,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
     function handleBuild(e) {
         e.preventDefault()
         if (buildName === "") {
-            Window.alert("Must give a build name")
+            window.alert("Must give a build name")
         } else {
             let data = {
                 buildName: buildName,
@@ -172,6 +172,14 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
         }
     }
 
+    function displayBaseStats() {
+        let newStats = [...stats]
+        return newStats.map((stat) => {return (<tr key={stat.name}>
+                                            <td>{stat.stat.name}</td>
+                                            <td>{stat.base_stat}</td>
+                                        </tr>)})
+    }
+
     
 
     return (
@@ -184,30 +192,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{stats[0].stat.name}</td>
-                            <td>{stats[0].base_stat}</td>
-                        </tr>
-                        <tr>
-                            <td>{stats[1].stat.name}</td>
-                            <td>{stats[1].base_stat}</td>
-                        </tr>
-                        <tr>
-                            <td>{stats[2].stat.name}</td>
-                            <td>{stats[2].base_stat}</td>
-                        </tr>
-                        <tr>
-                            <td>{stats[3].stat.name}</td>
-                            <td>{stats[3].base_stat}</td>
-                        </tr>
-                        <tr>
-                            <td>{stats[4].stat.name}</td>
-                            <td>{stats[4].base_stat}</td>
-                        </tr>
-                        <tr>
-                            <td>{stats[5].stat.name}</td>
-                            <td>{stats[5].base_stat}</td>
-                        </tr>
+                        {displayBaseStats()}
                     </tbody>
                 </table>
                 <table id="IV-stats">

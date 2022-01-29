@@ -77,265 +77,264 @@
         70
       ],
       "id": 2
+    },
+    {
+      "buildName": "punchzard",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "name": "charizard",
+      "moveset": [
+        "mega-punch",
+        "fire-punch",
+        "thunder-punch",
+        "swords-dance"
+      ],
+      "ability": "blaze",
+      "heldItem": "quick-claw",
+      "nature": "adamant",
+      "IV": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "EV": [
+        6,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "totalStats": [
+        154.25,
+        149.6,
+        98.5,
+        116.55,
+        105.5,
+        152
+      ],
+      "id": 3
+    },
+    {
+      "buildName": "eeveelution",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+      "name": "eevee",
+      "moveset": [
+        "sand-attack",
+        "headbutt",
+        "tackle",
+        "body-slam"
+      ],
+      "ability": "",
+      "heldItem": "",
+      "nature": "",
+      "IV": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "EV": [
+        6,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "totalStats": [
+        131.25,
+        107,
+        70.5,
+        65.5,
+        85.5,
+        107
+      ],
+      "id": 4
+    },
+    {
+      "buildName": "vapebeam",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png",
+      "name": "vaporeon",
+      "moveset": [
+        "bubble-beam",
+        "aurora-beam",
+        "hyper-beam",
+        "ice-beam"
+      ],
+      "ability": "water-absorb",
+      "heldItem": "wise-glasses",
+      "nature": "timid",
+      "IV": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "EV": [
+        252,
+        0,
+        6,
+        252,
+        0,
+        0
+      ],
+      "totalStats": [
+        237,
+        76.95,
+        81.25,
+        162,
+        115.5,
+        94.05
+      ],
+      "id": 5
+    },
+    {
+      "buildName": "joltjolt",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png",
+      "name": "jolteon",
+      "moveset": [
+        "thunderbolt",
+        "thunder-wave",
+        "thunder",
+        "toxic"
+      ],
+      "ability": "volt-absorb",
+      "heldItem": "life-orb",
+      "nature": "timid",
+      "IV": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "EV": [
+        6,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "totalStats": [
+        141.25,
+        76.95,
+        80.5,
+        162,
+        115.5,
+        200.2
+      ],
+      "id": 6
+    },
+    {
+      "buildName": "flameflare",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png",
+      "name": "flareon",
+      "moveset": [
+        "flamethrower",
+        "toxic",
+        "flame-charge",
+        "fire-fang"
+      ],
+      "ability": "flash-fire",
+      "heldItem": "smoke-ball",
+      "nature": "adamant",
+      "IV": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "EV": [
+        252,
+        252,
+        0,
+        0,
+        6,
+        0
+      ],
+      "totalStats": [
+        172,
+        200.2,
+        80.5,
+        103.95,
+        131.25,
+        85.5
+      ],
+      "id": 7
     }
   ],
   "team": [
     {
-      "name": "char team",
-      "slot1": "",
-      "slot2": "",
-      "slot3": "",
-      "slot4": "",
-      "slot5": "",
-      "slot6": "",
+      "name": "venas",
+      "slots": [
+        {
+          "slot1": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ],
+          "slot2": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ],
+          "slot3": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ],
+          "slot4": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ],
+          "slot5": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ],
+          "slot6": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ]
+        }
+      ],
       "id": 1
     },
     {
-      "name": "Venas",
-      "slot1": [
+      "name": "eeveeloutions",
+      "slots": [
         {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
+          "slot1": [
+            "eeveelution",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
           ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+          "slot2": [
+            "vapebeam",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
           ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+          "slot3": [
+            "joltjolt",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"
           ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
+          "slot4": [
+            "flameflare",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png"
           ],
-          "id": 1
-        }
-      ],
-      "slot2": [
-        {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
+          "slot5": [
+            "punchzard",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
           ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
-          ],
-          "id": 1
-        }
-      ],
-      "slot3": [
-        {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
-          ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
-          ],
-          "id": 1
-        }
-      ],
-      "slot4": [
-        {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
-          ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
-          ],
-          "id": 1
-        }
-      ],
-      "slot5": [
-        {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
-          ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
-          ],
-          "id": 1
-        }
-      ],
-      "slot6": [
-        {
-          "buildName": "vena",
-          "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-          "name": "venusaur",
-          "moveset": [
-            "cut",
-            "bind",
-            "tackle",
-            "take-down"
-          ],
-          "ability": "chlorophyll",
-          "heldItem": "smoke-ball",
-          "nature": "lonely",
-          "IV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "EV": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "totalStats": [
-            140,
-            95.7,
-            79.2,
-            105,
-            105,
-            85
-          ],
-          "id": 1
+          "slot6": [
+            "vena",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+          ]
         }
       ],
       "id": 2
