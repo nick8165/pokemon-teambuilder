@@ -1,3 +1,206 @@
-td {
-    border: 1px solid black;
+.hp {
+    background-color: rgb(245, 115, 115);
+    border: solid black 1px;
+    margin: 1px;
 }
+
+.attack {
+    background-color: orange;
+    border: solid black 1px;
+    margin: 1px;
+}
+
+.defense {
+    background-color: yellow;
+    border: solid black 1px;
+    margin: 1px;
+}
+
+.special-attack {
+    background-color: lightskyblue;
+    border: solid black 1px;
+    margin: 1px;
+}
+
+.special-defense {
+    background-color: lightgreen;
+    border: solid black 1px;
+    margin: 1px;
+}
+
+.speed {
+    background-color: lightpink;
+    border: solid black 1px;
+    margin: 1px;
+}
+
+.statbox {
+    background-color: lightgrey;
+    border:solid black 1px;
+    margin: 1px;
+}
+
+.grass {
+    background-color: lightgreen;
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.poison {
+    background-color: rgb(192, 28, 192);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.water {
+    background-color: rgb(53, 130, 245);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.fire{
+    background-color: rgb(241, 60, 28);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.normal {
+    background-color: rgb(228, 240, 228);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.electric {
+    background-color: rgb(237, 240, 87);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.ice {
+    background-color: rgb(141, 214, 248);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.fighting {
+    background-color: rgb(236, 174, 41);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.ground {
+    background-color: rgb(182, 157, 44);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.flying {
+    background-color: rgb(58, 187, 238);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.psychic {
+    background-color: rgb(191, 83, 201);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.bug{
+    background-color: rgb(86, 146, 78);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.rock{
+    background-color: rgb(97, 58, 15);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.ghost{
+    background-color: rgb(146, 58, 228);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.dark{
+    background-color: rgb(1, 5, 1);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+    color: white;
+}
+
+.dragon{
+    background-color: rgb(79, 30, 136);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+    color: white
+}
+
+.steel{
+    background-color: rgb(81, 98, 100);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+
+.fairy{
+    background-color: rgb(243, 146, 238);
+    padding: 3px;
+    border: solid black 1px;
+    margin: 1px;
+    width: 100px;
+    height: 30px;
+}
+

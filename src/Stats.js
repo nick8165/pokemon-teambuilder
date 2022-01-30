@@ -173,8 +173,8 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
     function displayBaseStats() {
         let newStats = [...stats]
         return newStats.map((stat) => {return (<Row key={stat.name}>
-                                            <Col xs lg="2">{stat.stat.name}</Col>
-                                            <Col xs lg="2">{stat.base_stat}</Col>
+                                            <Col xs lg="2" className={stat.stat.name}>{stat.stat.name}</Col>
+                                            <Col xs lg="2" className="statbox">{stat.base_stat}</Col>
                                         </Row>)})
     }
 
@@ -184,93 +184,96 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
             <div>
                 <Row><h2>Base Stats</h2></Row>
                 {displayBaseStats()}
+
                 <Row><h2>IV Stats</h2></Row>
                 <Row>
-                    <Col xs lg="2">hp</Col>
-                    <Col xs lg="2">{IV.hp}</Col>
-                    <Col xs lg="2"><input id="IV-hp" type="text" placeholder="IV-hp" className="hp" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="hp">hp</Col>
+                    <Col xs lg="2" className="statbox">{IV.hp}</Col>
+                    <Col xs lg="2"><input id="IV-hp" type="text" placeholder="IV-hp" onKeyDown={handleIVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">attack</Col>
-                    <Col xs lg="2">{IV.atk}</Col>
-                    <Col xs lg="2"><input id="IV-attack" type="text" placeholder="IV attack" className="atk" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="attack">attack</Col>
+                    <Col xs lg="2" className="statbox">{IV.atk}</Col>
+                    <Col xs lg="2"><input id="IV-attack" type="text" placeholder="IV attack" onKeyDown={handleIVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">defense</Col>
-                    <Col xs lg="2">{IV.def}</Col>
-                    <Col xs lg="2"><input id="IV-defense" type="text" placeholder="IV defense" className="def" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="defense">defense</Col>
+                    <Col xs lg="2" className="statbox">{IV.def}</Col>
+                    <Col xs lg="2"><input id="IV-defense" type="text" placeholder="IV defense" onKeyDown={handleIVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-attack</Col>
-                    <Col xs lg="2">{IV.spatk}</Col>
-                    <Col xs lg="2"><input id="IV-special-attack" type="text" placeholder="IV special-attack" className="spatk" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="special-attack">special-attack</Col>
+                    <Col xs lg="2" className="statbox">{IV.spatk}</Col>
+                    <Col xs lg="2"><input id="IV-special-attack" type="text" placeholder="IV special-attack" onKeyDown={handleIVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-defense</Col>
-                    <Col xs lg="2">{IV.spdef}</Col>
-                    <Col xs lg="2"><input id="IV-special-defense" type="text" placeholder="IV special-defense" className="spdef" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="special-defense">special-defense</Col>
+                    <Col xs lg="2" className="statbox">{IV.spdef}</Col>
+                    <Col xs lg="2"><input id="IV-special-defense" type="text" placeholder="IV special-defense" onKeyDown={handleIVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">speed</Col>
-                    <Col xs lg="2">{IV.spd}</Col>
-                    <Col xs lg="2"><input id="IV-speed" type="text" placeholder="IV-speed" className="spd" onKeyDown={handleIVChange} /></Col>
+                    <Col xs lg="2" className="speed">speed</Col>
+                    <Col xs lg="2" className="statbox">{IV.spd}</Col>
+                    <Col xs lg="2"><input id="IV-speed" type="text" placeholder="IV-speed" onKeyDown={handleIVChange} /></Col>
                 </Row>
+
                 <Row><h2>EV Stats</h2></Row>
                 <Row>
-                    <Col xs lg="2">hp</Col>
-                    <Col xs lg="2">{EV.hp}</Col>
-                    <Col xs lg="2"><input id="EV-hp" type="text" placeholder="EV hp" className="hp" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="hp">hp</Col>
+                    <Col xs lg="2" className="statbox">{EV.hp}</Col>
+                    <Col xs lg="2"><input id="EV-hp" type="text" placeholder="EV hp" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">attack</Col>
-                    <Col xs lg="2">{EV.atk}</Col>
-                    <Col xs lg="2"><input id="EV-attack" type="text" placeholder="EV attack" className="atk" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="attack">attack</Col>
+                    <Col xs lg="2" className="statbox">{EV.atk}</Col>
+                    <Col xs lg="2"><input id="EV-attack" type="text" placeholder="EV attack" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">defense</Col>
-                    <Col xs lg="2">{EV.def}</Col>
-                    <Col xs lg="2"><input id="EV-defense" type="text" placeholder="EV defense" className="def" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="defense">defense</Col>
+                    <Col xs lg="2" className="statbox">{EV.def}</Col>
+                    <Col xs lg="2"><input id="EV-defense" type="text" placeholder="EV defense" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-attack</Col>
-                    <Col xs lg="2">{EV.spatk}</Col>
-                    <Col xs lg="2"><input id="EV-special-attack" type="text" placeholder="EV special-attack" className="spatk" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="special-attack">special-attack</Col>
+                    <Col xs lg="2" className="statbox">{EV.spatk}</Col>
+                    <Col xs lg="2"><input id="EV-special-attack" type="text" placeholder="EV special-attack" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-defense</Col>
-                    <Col xs lg="2">{EV.spdef}</Col>
-                    <Col xs lg="2"><input id="EV-special-defense" type="text" placeholder="EV special-defense" className="spdef" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="special-defense">special-defense</Col>
+                    <Col xs lg="2" className="statbox">{EV.spdef}</Col>
+                    <Col xs lg="2"><input id="EV-special-defense" type="text" placeholder="EV special-defense" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">speed</Col>
-                    <Col xs lg="2">{EV.spd}</Col>
-                    <Col xs lg="2"><input id="EV-speed" type="text" placeholder="EV speed" className="spd" onKeyDown={handleEVChange} /></Col>
+                    <Col xs lg="2" className="speed">speed</Col>
+                    <Col xs lg="2" className="statbox">{EV.spd}</Col>
+                    <Col xs lg="2"><input id="EV-speed" type="text" placeholder="EV speed" onKeyDown={handleEVChange} /></Col>
                 </Row>
                 <Button variant="secondary" size="lg" type="submit" onClick={handleReset}>Reset EVs</Button>
+
                 <Row><h2>Total Stats</h2></Row>
                 <Row>
-                    <Col xs lg="2">hp</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.hp)}</Col>
+                    <Col xs lg="2" className="hp">hp</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.hp)}</Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">attack</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.atk)}</Col>
+                    <Col xs lg="2" className="attack">attack</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.atk)}</Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">defense</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.def)}</Col>
+                    <Col xs lg="2" className="defense">defense</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.def)}</Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-attack</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.spatk)}</Col>
+                    <Col xs lg="2" className="special-attack">special-attack</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.spatk)}</Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">special-defense</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.spdef)}</Col>
+                    <Col xs lg="2" className="special-defense">special-defense</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.spdef)}</Col>
                 </Row>
                 <Row>
-                    <Col xs lg="2">speed</Col>
-                    <Col xs lg="2">{Math.floor(totalStat.spd)}</Col>
+                    <Col xs lg="2" className="speed">speed</Col>
+                    <Col xs lg="2" className="statbox">{Math.floor(totalStat.spd)}</Col>
                 </Row>
                 <Form id="poke-form">
                     <Form.Group>

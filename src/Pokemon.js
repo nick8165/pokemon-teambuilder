@@ -41,7 +41,7 @@ function Pokemon() {
 
     return (
         <Container fluid="sm">
-            <select name="select" id="select" onChange={handleChange}>
+            <select className="form-select" id="select" onChange={handleChange}>
                 <option value="blank">Choose your Pokemon</option>
                 {option()}
             </select>

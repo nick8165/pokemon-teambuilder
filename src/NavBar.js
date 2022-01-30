@@ -1,16 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom"
+import { Card, Nav } from "react-bootstrap"
 
 function NavBar() {
     
     return (
-        <div id="nav">
-            <nav className="nav">
-                <NavLink  to="/" className="link">Pokemon</NavLink>
-                <NavLink to="/roster" className="link">Roster</NavLink>
-                <NavLink to="/team" className="link">Team</NavLink>
-            </nav>
-        </div>
+            <Card>
+                <Card.Header>
+                    <Nav className="justify-content-center" variant="pills">
+                    <Nav.Item>
+                        <Nav.Link href="/">Pokemon</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/roster">Roster</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/team">Team</Nav.Link>
+                    </Nav.Item>
+                    </Nav>
+                </Card.Header>
+            </Card>
     );
 }
 
