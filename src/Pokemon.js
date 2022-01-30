@@ -40,7 +40,7 @@ function Pokemon() {
     }
 
     return (
-        <Container>
+        <Container fluid="sm">
             <select name="select" id="select" onChange={handleChange}>
                 <option value="blank">Choose your Pokemon</option>
                 {option()}

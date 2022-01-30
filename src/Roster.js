@@ -124,7 +124,7 @@ function Roster() {
     }
 
     return (
-        <Container >
+        <Container fluid="sm">
             <Card>
                 <select id="slot1" onChange={handleChange}>add pokemon to team
                     <option value="">add pokemon to team</option>

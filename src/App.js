@@ -11,7 +11,7 @@ function App() {
     const [page, setPage] = useState("/")
 
     return (
-        <div>
+        <div className="App">
             <NavBar onChangePage={setPage} />
             <Routes>
               <Route exact path="/roster" element={<Roster />}/>  

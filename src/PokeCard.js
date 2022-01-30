@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container"
+import { Card, Row, Col } from "react-bootstrap"
 import Stats from "./Stats"
 
 function PokeCard({selected, nature}) {
@@ -102,41 +102,64 @@ function PokeCard({selected, nature}) {
         if (pokemon === "") {
             return (<div>Loading...</div>)
         } else {
-        return (<Container>
-                    <img src={pokemon.sprites.front_default} alt="Pokemon"/>
-                    {extractType(pokemon.types)}
-                    <select name="move" id="move1" onChange={handleMoveSet}>
-                        <option value="blank">Move Slot 1</option>
-                        {extractMoves(pokemon.moves)}
-                    </select>
-                    <select name="move" id="move2" onChange={handleMoveSet}>
-                        <option value="blank">Move Slot 2</option>
-                        {extractMoves(pokemon.moves)}
-                    </select>
-                    <select name="move" id="move3" onChange={handleMoveSet}>
-                        <option value="blank">Move Slot 3</option>
-                        {extractMoves(pokemon.moves)}
-                    </select>
-                    <select name="move" id="move4" onChange={handleMoveSet}>
-                        <option value="blank">Move Slot 4</option>
-                        {extractMoves(pokemon.moves)}
-                    </select>
-                    <div>
-                        <select name="ability" id="ability" onChange={handleAbilityChange}>
-                            <option value="blank">Ability</option>
-                            {extractAbilities()}
-                        </select>
-                        <select name="item" id="item" onChange={handleItemChange}>
-                            <option value="blank">Held Item</option>
-                            {item()}
-                        </select>
-                        <select name="nature" id="nature" onChange={handleNatureChange}>
+        return (<div>
+                    <Card className="text-center" style={{ width: '18rem'}}>
+                        <Card.Img variant="top" src={pokemon.sprites.front_default} className="card-img-top" alt="Pokemon" width="200px" height="200px"/>
+                        <Card.Body className="card-body">
+                            {extractType(pokemon.types)}
+                        </Card.Body>
+                    </Card>
+                    <Row>
+                        <Col xs lg="3">
+                            <select className="form-select" id="move1" onChange={handleMoveSet}>
+                                <option value="blank">Move Slot 1</option>
+                                {extractMoves(pokemon.moves)}
+                            </select>
+                        </Col>
+                        <Col xs lg="3">
+                            <select className="form-select" id="ability" onChange={handleAbilityChange}>
+                                <option value="blank">Ability</option>
+                                {extractAbilities()}
+                            </select>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs lg="3">
+                            <select className="form-select" id="move2" onChange={handleMoveSet}>
+                                <option value="blank">Move Slot 2</option>
+                                {extractMoves(pokemon.moves)}
+                            </select>
+                        </Col>
+                        <Col xs lg="3"><select className="form-select" id="item" onChange={handleItemChange}>
+                                        <option value="blank">Held Item</option>
+                                        {item()}
+                                    </select>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs lg="3">
+                            <select className="form-select" id="move3" onChange={handleMoveSet}>
+                                <option value="blank">Move Slot 3</option>
+                                {extractMoves(pokemon.moves)}
+                            </select>
+                        </Col>
+                        <Col xs lg="3">
+                            <select className="form-select" id="nature" onChange={handleNatureChange}>
                             <option value="">Nature</option>
                             {extractNature()}
                         </select>
-                    </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs lg="3">
+                            <select className="form-select" id="move4" onChange={handleMoveSet}>
+                                <option value="blank">Move Slot 4</option>
+                                {extractMoves(pokemon.moves)}
+                            </select>
+                        </Col>
+                    </Row>
                     <Stats stats={pokemon.stats} natureData={natureData} selectedItem={selectedItem} moveSet={moveSet} pokemon={pokemon} selectedNature={selectedNature} ability={ability}/>
-               </Container>
+               </div>
         )}
     }
 
