@@ -4,6 +4,7 @@ import NavBar from "./NavBar.js";
 import Pokemon from "./Pokemon";
 import Team from "./Team";
 import Roster from "./Roster";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Container from "react-bootstrap/Container"
+import { Container, Row, Col, Form, Button } from "react-bootstrap"
 
 function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNature, ability }) {
 
@@ -12,9 +12,8 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
     function handleIVChange(e) {
         let int = parseInt(e.target.value)
         if (e.key === "Enter" && int < 32 && int > -1) {
-            let tr = e.target.closest("tr")
-        
-            switch(tr.id) {
+            
+            switch(e.target.id) {
                 case("IV-hp"):
                     setIV(prevState => ({...prevState, hp: int}))
                     break;
@@ -49,9 +48,8 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
     function handleEVChange(e) {
         let int = parseInt(e.target.value)
         if(e.key === "Enter" && totalEV - int >= 0 && int > -1 && int <= 252) {
-            let tr = e.target.closest("tr")
 
-            switch(tr.id) {
+            switch(e.target.id) {
                 case("EV-hp"):
                     setEV(prevState => ({...prevState, hp: int}))
                     break;
@@ -174,173 +172,114 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
 
     function displayBaseStats() {
         let newStats = [...stats]
-        return newStats.map((stat) => {return (<tr key={stat.name}>
-                                            <td>{stat.stat.name}</td>
-                                            <td>{stat.base_stat}</td>
-                                        </tr>)})
+        return newStats.map((stat) => {return (<Row key={stat.name}>
+                                            <Col>{stat.stat.name}</Col>
+                                            <Col>{stat.base_stat}</Col>
+                                        </Row>)})
     }
 
     
 
     return (
-        <Container>
-            <div>
-                <table id="base-stats">
-                    <thead>
-                        <tr>
-                            <th>Base Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayBaseStats()}
-                    </tbody>
-                </table>
-                <table id="IV-stats">
-                    <thead>
-                        <tr>
-                            <th>IV Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="IV-hp">
-                            <td>hp</td>
-                            <td>{IV.hp}</td>
-                            <td>
-                            <input type="text" placeholder="IV-hp" className="hp" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                        <tr id="IV-attack">
-                            <td>attack</td>
-                            <td>{IV.atk}</td>
-                            <td>
-                            <input type="text" placeholder="IV-attack" className="atk" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                        <tr id="IV-defense">
-                            <td>defense</td>
-                            <td>{IV.def}</td>
-                            <td>
-                            <input type="text" placeholder="IV-defense" className="def" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                        <tr id="IV-special-attack">
-                            <td>special-attack</td>
-                            <td>{IV.spatk}</td>
-                            <td>
-                            <input type="text" placeholder="IV-special-attack" className="sp-atk" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                        <tr id="IV-special-defense">
-                            <td>special-defense</td>
-                            <td>{IV.spdef}</td>
-                            <td>
-                            <input type="text" placeholder="IV-special-defense" className="sp-def" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                        <tr id="IV-speed">
-                            <td>speed</td>
-                            <td>{IV.spd}</td>
-                            <td>
-                                <input type="text" placeholder="IV-speed" className="spd" onKeyDown={handleIVChange} />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="EV-stats">
-                    <thead>
-                        <tr>
-                            <th>EV Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="EV-hp">
-                            <td>hp</td>
-                            <td>{EV.hp}</td>
-                            <td>
-                                <input type="text" placeholder="EV-hp" className="hp" onKeyDown={handleEVChange} />
-                            </td>
-                        </tr>
-                        <tr id="EV-attack">
-                            <td>attack</td>
-                            <td>{EV.atk}</td>
-                            <td>
-                                <input type="text" placeholder="EV-attack" className="atk" onKeyDown={handleEVChange} /> 
-                            </td>
-                        </tr>
-                        <tr id="EV-defense">
-                            <td>defense</td>
-                            <td>{EV.def}</td>
-                            <td>
-                                <input type="text" placeholder="EV-defense" className="def" onKeyDown={handleEVChange} />
-                            </td>
-                        </tr>
-                        <tr id="EV-special-attack">
-                            <td>special-attack</td>
-                            <td>{EV.spatk}</td>
-                            <td>
-                                <input type="text" placeholder="EV-speical-attack" className="sp-atk" onKeyDown={handleEVChange} />
-                            </td>
-                        </tr>
-                        <tr id="EV-special-defense">
-                            <td>special-defense</td>
-                            <td>{EV.spdef}</td>
-                            <td>
-                                <input type="text" placeholder="EV-special-defense" className="sp-def" onKeyDown={handleEVChange} />
-                            </td>
-                        </tr>
-                        <tr id="EV-speed">
-                            <td>speed</td>
-                            <td>{EV.spd}</td>
-                            <td>
-                                <input type="text" placeholder="EV-speed" className="spd" onKeyDown={handleEVChange} />
-                            </td>
-                        </tr>
-                        <tr id="total-EV">
-                            <td>EVs Availiable</td>
-                            <td>{totalEV}</td>
-                            <td><button id="reset" onClick={handleReset}>Reset</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="total-stats">
-                    <thead>
-                        <tr>
-                            <th>Total Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                     <tr id="total-hp">
-                            <td>hp</td>
-                            <td>{Math.floor(totalStat.hp)}</td>
-                        </tr>
-                        <tr id="total-attack">
-                            <td>attack</td>
-                            <td>{Math.floor(totalStat.atk)}</td>
-                        </tr>
-                        <tr id="total-defense">
-                            <td>defense</td>
-                            <td>{Math.floor(totalStat.def)}</td>
-                        </tr>
-                        <tr id="total-special-attack">
-                            <td>special-attack</td>
-                            <td>{Math.floor(totalStat.spatk)}</td>
-                        </tr>
-                        <tr id="total-special-defense">
-                            <td>special-defense</td>
-                            <td>{Math.floor(totalStat.spdef)}</td>
-                        </tr>
-                        <tr id="total-speed">
-                            <td>speed</td>
-                            <td>{Math.floor(totalStat.spd)}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <form id="poke-form" className="form">
-                    <input type="text" placeholder="Name of Build" onChange={handleBuildName} />
-                    <button type="submit" onClick={handleBuild}>Save Build</button>
-                </form>
-            </div>
-        </Container>
+        <div>
+            <Container className="fluid">
+                <Row><h2>Base Stats</h2></Row>
+                {displayBaseStats()}
+                <Row><h2>IV Stats</h2></Row>
+                <Row>
+                    <Col>hp</Col>
+                    <Col>{IV.hp}</Col>
+                    <Col><input id="IV-hp" type="text" placeholder="IV-hp" className="hp" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>attack</Col>
+                    <Col>{IV.atk}</Col>
+                    <Col><input id="IV-attack" type="text" placeholder="IV attack" className="atk" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>defense</Col>
+                    <Col>{IV.def}</Col>
+                    <Col><input id="IV-defense" type="text" placeholder="IV defense" className="def" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>special-attack</Col>
+                    <Col>{IV.spatk}</Col>
+                    <Col><input id="IV-special-attack" type="text" placeholder="IV special-attack" className="spatk" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>special-defense</Col>
+                    <Col>{IV.spdef}</Col>
+                    <Col><input id="IV-special-defense" type="text" placeholder="IV special-defense" className="spdef" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>speed</Col>
+                    <Col>{IV.spd}</Col>
+                    <Col><input id="IV-speed" type="text" placeholder="IV-speed" className="spd" onKeyDown={handleIVChange} /></Col>
+                </Row>
+                <Row><h2>EV Stats</h2></Row>
+                <Row>
+                    <Col>hp</Col>
+                    <Col>{EV.hp}</Col>
+                    <Col><input id="EV-hp" type="text" placeholder="EV hp" className="hp" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>attack</Col>
+                    <Col>{EV.atk}</Col>
+                    <Col><input id="EV-attack" type="text" placeholder="EV attack" className="atk" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>defense</Col>
+                    <Col>{EV.def}</Col>
+                    <Col><input id="EV-defense" type="text" placeholder="EV defense" className="def" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>special-attack</Col>
+                    <Col>{EV.spatk}</Col>
+                    <Col><input id="EV-special-attack" type="text" placeholder="EV special-attack" className="spatk" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>special-defense</Col>
+                    <Col>{EV.spdef}</Col>
+                    <Col><input id="EV-special-defense" type="text" placeholder="EV special-defense" className="spdef" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row>
+                    <Col>speed</Col>
+                    <Col>{EV.spd}</Col>
+                    <Col><input id="EV-speed" type="text" placeholder="EV speed" className="spd" onKeyDown={handleEVChange} /></Col>
+                </Row>
+                <Row><h2>Total Stats</h2></Row>
+                <Row>
+                    <Col>hp</Col>
+                    <Col>{Math.floor(totalStat.hp)}</Col>
+                </Row>
+                <Row>
+                    <Col>attack</Col>
+                    <Col>{Math.floor(totalStat.atk)}</Col>
+                </Row>
+                <Row>
+                    <Col>defense</Col>
+                    <Col>{Math.floor(totalStat.def)}</Col>
+                </Row>
+                <Row>
+                    <Col>special-attack</Col>
+                    <Col>{Math.floor(totalStat.spatk)}</Col>
+                </Row>
+                <Row>
+                    <Col>special-defense</Col>
+                    <Col>{Math.floor(totalStat.spdef)}</Col>
+                </Row>
+                <Row>
+                    <Col>speed</Col>
+                    <Col>{Math.floor(totalStat.spd)}</Col>
+                </Row>
+                <Form id="poke-form">
+                    <Form.Group>
+                        <Form.Control type="text" placeholder="Name of Build" onChange={handleBuildName} />
+                        <Button type="submit" onClick={handleBuild}>Save Build</Button>
+                    </Form.Group>
+                </Form>
+            </Container>
+        </div>
     )
 }
 

@@ -44,8 +44,6 @@ function Team() {
         }
     }
 
-    console.log(individual, team)
-
     return (
         displayTeams()
     )
