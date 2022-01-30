@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { Row, Col, Form, Button } from "react-bootstrap"
 
 function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNature, ability }) {
 
@@ -172,10 +172,10 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
 
     function displayBaseStats() {
         let newStats = [...stats]
-        return newStats.map((stat) => {return (<Row key={stat.name}>
-                                            <Col xs lg="2" className={stat.stat.name}>{stat.stat.name}</Col>
-                                            <Col xs lg="2" className="statbox">{stat.base_stat}</Col>
-                                        </Row>)})
+        return newStats.map((stat) => {return (<Row key={stat.stat.name}>
+                                                    <Col xs lg="2" className={stat.stat.name}>{stat.stat.name}</Col>
+                                                    <Col xs lg="2" className="statbox">{stat.base_stat}</Col>
+                                                </Row>)})
     }
 
     
