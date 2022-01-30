@@ -311,6 +311,45 @@
         50
       ],
       "id": 8
+    },
+    {
+      "buildName": "test bulb 2",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "name": "bulbasaur",
+      "moveset": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "ability": "",
+      "heldItem": "",
+      "nature": "timid",
+      "IV": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "EV": [
+        252,
+        252,
+        6,
+        0,
+        0,
+        0
+      ],
+      "totalStats": [
+        136,
+        76,
+        54,
+        70,
+        70,
+        55
+      ],
+      "id": 9
     }
   ],
   "team": [

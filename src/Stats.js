@@ -135,7 +135,7 @@ function Stats({ stats, natureData, selectedItem, moveSet, pokemon, selectedNatu
                 console.log(null)
         }
 
-        setTotalStat(prevState => ({...prevState, hp:newhp, atk:newatk, def:newdef, spatk:newspatk, spdef:newspdef, spd:newspd}))
+        setTotalStat(prevState => ({...prevState, hp: Math.floor(newhp), atk: Math.floor(newatk), def: Math.floor(newdef), spatk: Math.floor(newspatk), spdef: Math.floor(newspdef), spd:Math.floor(newspd)}))
     }, [IV, EV, natureData, pokemon])
 
     function handleBuildName(e) {
