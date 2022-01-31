@@ -16,6 +16,6 @@ The total stats will dynamically display the total stats after modifying each EV
 The roster route is used to take six pokemon that the user has created and gives the option to add it to a team.
 There are six total slots to fill and a build name can be given to each team created.
 
-#Team
+# Team
 
 The team route takes the created team and displays them on the page with the team name shown.
